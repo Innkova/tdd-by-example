@@ -1,2 +1,2 @@
 # tdd-by-example
-Test Driven Development By Example
+TDD By Example
