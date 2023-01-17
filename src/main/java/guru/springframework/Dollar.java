@@ -6,7 +6,8 @@ public class Dollar extends Money {
         this.amount = amount;
     }
 
-    Dollar times(int multiplier) {
+    @Override
+    public Money times(int multiplier) {
         return new Dollar(amount * multiplier);
     }
 }
