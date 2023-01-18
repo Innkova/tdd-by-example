@@ -21,24 +21,25 @@ public class Money implements Expression {
         return currency;
     }
 
-    public Money times(int multiplier) {
+    @Override
+    public Expression times(int multiplier) {
         return new Money(amount * multiplier, currency);
+    }
+
+    @Override
+    public Money reduce(Bank bank, String to) {
+        return new Money(amount / bank.rate(currency, to), to);
+    }
+
+    @Override
+    public Expression plus(Expression added) {
+        return new Sum(this, added);
     }
 
     public boolean equals(Object object) {
         Money money = (Money) object;
         return amount == money.amount
                 && currency.equals(money.currency);
-    }
-
-    @Override
-    public Money reduce(Bank bank, String to) {
-//        int rate = (currency.equals("CHF") && (to.equals("USD")) ? 2 : 1);
-        return new Money(amount / bank.rate(currency, to), to);
-    }
-
-    public Expression plus(Money added) {
-        return new Sum(this, added);
     }
 
     @Override
