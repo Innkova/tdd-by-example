@@ -1,20 +1,25 @@
 package guru.springframework;
 
+import org.w3c.dom.ls.LSOutput;
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
 public class Money implements Expression {
-    protected int amount;
+    protected double amount;
     protected String currency;
 
-    public Money(int amount, String currency) {
+    public Money(double amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }
 
-    public static Money dollar(int amount) {
+    public static Money dollar(double amount) {
         return new Money(amount, "USD");
     }
 
-    public static Money franc(int amount) {
-        return new Money(amount, "CHF");
+    public static Money gel(double amount) {
+        return new Money(amount, "GEL");
     }
 
     protected String currency() {
@@ -22,7 +27,7 @@ public class Money implements Expression {
     }
 
     @Override
-    public Expression times(int multiplier) {
+    public Expression times(double multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
