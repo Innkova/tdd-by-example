@@ -5,6 +5,6 @@ public interface Expression {
 
     Expression plus(Expression added);
 
-    public Expression times(int multiplier);
+    Expression times(int multiplier);
 
 }
